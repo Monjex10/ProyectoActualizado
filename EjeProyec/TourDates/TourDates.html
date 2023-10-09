@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/385479e3e1.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./TourDates.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <img id="logo" src="../Imagenes/logoRollingStones.jpeg" alt="" srcset="" />
+      <span id="welcome"> Hola Usuario  </span> &nbsp; &nbsp; <i class="fa-solid fa-music"></i>
+    </div>
+
+    <h1>Tour y Fechas</h1>
+    <div class="event-container">
+      <ul class="event-list">
+        <li>
+          <span class="event-date"> Viernes 01 de Septiembre </span>
+          <span class="event-city"> Buenos Aires </span>
+          <button onclick= "getTickets(`Buenos Aires`, `Sold Out`)" class="event-button">Sold Out</button>
+        </li>
+        <li>
+          <span class="event-date"> Viernes 08 de Septiembre </span>
+          <span class="event-city"> Cordoba </span>
+          <button onclick= "getTickets(`Cordoba`)" class="event-button">Tickets</button>
+        </li>
+        <li>
+          <span class="event-date"> Sabado 29 de Septiembre</span>
+          <span class="event-city"> Mendoza </span>
+          <button onclick= "getTickets(`Mendoza`)" class="event-button">Tickets</button>
+        </li>
+        <li>
+          <span class="event-date"> Domingo 30 de Septiembre</span>
+          <span class="event-city"> Jujuy</span>
+          <button onclick= "getTickets(`Jujuy`)" class="event-button">Tickets</button>
+        </li>
+        <li>
+          <span class="event-date">Viernes 1 de Octubre </span>
+          <span class="event-city"> San Pablo </span>
+          <button onclick= "getTickets(`San Pablo`)" class="event-button">Tickets</button>
+        </li>
+      </ul>
+    </div>
+    <a href="../Home/Home.html">
+      <h2>HOME</h2>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
+    <script src="./TourDates.js"></script>
+  </body>
+</html>

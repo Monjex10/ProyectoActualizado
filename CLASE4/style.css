@@ -1,0 +1,40 @@
+body {
+    background-color: yellowgreen;
+    
+}
+
+div {
+    border: 2px solid red;
+    height: 100px;
+}
+
+#uno {
+    position: static;
+}
+
+#dos {
+    position: relative;
+    top: -34px;
+    left: 100px;
+    background-color: aqua;
+}
+
+#tres {
+    position: fixed;
+    background-color: pink;
+    top: 100px;
+    left: 50px;
+    z-index: -3;
+}
+
+#cuatro {
+    position: relative;
+}
+
+#cinco {
+    position: absolute;
+    background-color: purple;
+    bottom: 10px;
+    right: 20px;
+
+}

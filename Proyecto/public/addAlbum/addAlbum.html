@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="../img/ico.jpg" />
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album</title>
+</head>
+<body>
+    <a href="../menuAlbum/menualbum.html">
+        <h2>Volver</h2>
+      </a>
+     <div>
+        <form action="https://formspree.io/f/xeqbavkz" method="post">
+                <label for="Titulo">Titulo
+                <input type="text" placeholder="titulo" required>
+                <br>
+                <br>
+                </label>        
+                <label for="Año">Año
+                <input type="date" placeholder="Año" required>
+                </label>
+                <br>
+                <br>
+                <label for="textarea">Descripcion
+                <br>
+                    <textarea name="descripcion" id="" cols="30" rows="10", required style="resize: none;" >
+                    </textarea>
+                </label>
+                <br>
+                <br>
+                <label for="Imagen">Carga una imagen del disco
+                <input type="url" placeholder="Imagen" required; >
+                <br>
+                <br>
+                <input type="image" id="image" alt="" src="" />
+                <label for="">
+                <input type="submit">
+                </label>
+                <br>
+                <br>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="agregarAlbum.js"></script>
+</body>
+</html>
