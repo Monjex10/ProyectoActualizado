@@ -1,68 +1,85 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
-const Album = require("../models/album")
+const Album = require("../models/album");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
+const saltRounds = 10;
+const secret = "milanesa";
+
+const hashPassword = async (password) => {
+  const hash = await bcrypt.hash(password, saltRounds);
+  return hash;
+};
 // Ruta para crear un usuario
 router.post("/createuser", async (req, res) => {
+  const { password, email, nombre, apellido } = req.body;
+  const hashed = await hashPassword(password);
+  const usuario = {
+    password: hashed,
+    email,
+    nombre,
+    apellido,
+  };
   try {
-    let usuario = await User.create(req.body);
+    let usuario=  await usuario.create(usuario);
     res.status(200).send("usuario creado correctamente");
   } catch (error) {
     res.status(500).send({ "error al crear el usuario": error });
   }
 });
 
-// Ruta para el login 
+// Ruta para el login
 router.post("/login", async (req, res) => {
   try {
-    const email = req.body.email
-    const password = req.body.password
-    const user = await User.findOne({"email": email})
-    const match = bcrypt.compare(password, user.password)
-    const payload = { email, nombre: user.nombre, apellido: user.apellido }
+    const email = req.body.email;
+    const password = req.body.password;
+    const user = await User.findOne({ email: email });
+    const match = bcrypt.compare(password, user.password);
+    const payload = { email, nombre: user.nombre, apellido: user.apellido };
     if (match) {
-      const token = jwt.sign(payload, secret)
-      res.cookie("token", token)
-      res.status(200).send(payload)
+      const token = jwt.sign(payload, secret);
+      res.cookie("token", token);
+      res.status(200).send(payload);
     }
-
   } catch (error) {
-    res.status(401).send({message:error.message})
+    res.status(401).send({ message: error.message });
   }
-})
+});
 
-// Ruta para el logout 
+// Ruta para el logout
 router.post("/logout", async (req, res) => {
   try {
-    res.clearCookie("token")
-    res.sendStatus(204)
+    res.clearCookie("token");
+    res.sendStatus(204);
   } catch (error) {
-    res.sendStatus(500)
+    res.sendStatus(500);
   }
-})
+});
 
-// Ruta /me para restringir el acceso a quienes no se loguean 
+// Ruta /me para restringir el acceso a quienes no se loguean
 router.get("/me", (req, res) => {
   try {
-    const token = req.cookies.token
-    const payload = jwt.verify(token, secret)
-    res.send(payload)
+    const token = req.cookies.token;
+    const payload = jwt.verify(token, secret);
+    res.send(payload);
   } catch (error) {
-    res.status(401).send(error.message)
+    res.status(401).send(error.message);
   }
-})
-
+});
 
 // Una ruta que reciba un id por params y retorne la data del usuario nuevamente, excluyendo la contraseña.
 router.get("/usuario/:id", async (req, res) => {
   try {
     let respuesta = await User.findById(req.params.id);
-    res.status(200).send({ 
+    res.status(200).send({
       usuario: {
-        nombre: respuesta.nombre, 
-        apellido: respuesta.apellido, 
-        email:  respuesta.email }});
+        nombre: respuesta.nombre,
+        apellido: respuesta.apellido,
+        email: respuesta.email,
+      },
+    });
   } catch (error) {
     res.status(500).send({ "error al crear el usuario": error });
   }
@@ -82,14 +99,13 @@ router.put("/usuario/edit/:id", async (req, res) => {
 
 // Una ruta para agregar un album.
 router.post("/album/agregar", async (req, res) => {
-    try {
-        let album = await Album.create(req.body)
-        res.status(200).send({"Album creado": album})
-    } catch (error) {
-        res.status(500).send({ "error al agregar un album": error });
-    }
-})
-
+  try {
+    let album = await Album.create(req.body);
+    res.status(200).send({ "Album creado": album });
+  } catch (error) {
+    res.status(500).send({ "error al agregar un album": error });
+  }
+});
 
 // Una ruta para editar un album.
 router.put("/album/:id", async (req, res) => {
@@ -164,7 +180,5 @@ router.delete("/album/:idAlbum", async (req, res) => {
     res.status(500).send({ "error al eliminar el album": error });
   }
 });
-
-
 
 module.exports = router;
