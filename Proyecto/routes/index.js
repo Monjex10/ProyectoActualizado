@@ -23,7 +23,7 @@ router.post("/createuser", async (req, res) => {
     apellido,
   };
   try {
-    let usuario=  await usuario.create(usuario);
+    await User.create(usuario)
     res.status(200).send("usuario creado correctamente");
   } catch (error) {
     res.status(500).send({ "error al crear el usuario": error });
@@ -33,8 +33,8 @@ router.post("/createuser", async (req, res) => {
 // Ruta para el login
 router.post("/login", async (req, res) => {
   try {
-    const email = req.body.email;
-    const password = req.body.password;
+    const email = req.body.usuario;
+    const password = req.body.contrasena;
     const user = await User.findOne({ email: email });
     const match = bcrypt.compare(password, user.password);
     const payload = { email, nombre: user.nombre, apellido: user.apellido };

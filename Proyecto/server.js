@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 const url =
   "mongodb+srv://alanrobert7:Kukiño1245@cursointro.yg5v5ef.mongodb.net/?retryWrites=true&w=majority";
@@ -8,6 +9,7 @@ const url =
 const routes = require("./routes/index");
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", routes);

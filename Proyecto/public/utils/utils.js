@@ -15,4 +15,4 @@ const logOut = async () => {
   }
 };
 
-export { onLoad, logOut }  
+export { onLoad, logOut };  
