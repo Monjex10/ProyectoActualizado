@@ -28,7 +28,7 @@ const addAlbum = async (e) => {
     e.preventDefault()
     const objectToSend = getInputValues();
   try {
-    let album = await axios.post("../menuAlbum/menuAlbum.html", objectToSend);
+    let album = await axios.post("http://localhost:3000/album/agregar", objectToSend);
     await swal({
       title: "Album agregado correctamente!",
       text: `Album: ${album.data.titulo}`,

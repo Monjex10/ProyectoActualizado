@@ -23,7 +23,7 @@ router.post("/createuser", async (req, res) => {
     apellido,
   };
   try {
-    await User.create(usuario)
+    await User.create(usuario);
     res.status(200).send("usuario creado correctamente");
   } catch (error) {
     res.status(500).send({ "error al crear el usuario": error });
@@ -36,12 +36,16 @@ router.post("/login", async (req, res) => {
     const email = req.body.usuario;
     const password = req.body.contrasena;
     const user = await User.findOne({ email: email });
-    const match = bcrypt.compare(password, user.password);
+    console.log(user);
+    const match = await bcrypt.compare(password, user.password);
+    console.log(match);
     const payload = { email, nombre: user.nombre, apellido: user.apellido };
     if (match) {
       const token = jwt.sign(payload, secret);
       res.cookie("token", token);
       res.status(200).send(payload);
+    } else {
+      res.status(401).send({ message: "La contraseña no coincide" });
     }
   } catch (error) {
     res.status(401).send({ message: error.message });

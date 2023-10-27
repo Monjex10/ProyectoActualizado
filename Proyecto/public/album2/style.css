@@ -63,6 +63,7 @@ body {
     padding: 8px;
     font-size: 18px;
     display: block;
+    cursor: pointer;
   }
 
   #al2 {
@@ -76,4 +77,8 @@ body {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+  }
+
+  .eliminar {
+    display: none;
   }

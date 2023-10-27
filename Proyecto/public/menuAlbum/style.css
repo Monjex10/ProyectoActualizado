@@ -78,3 +78,28 @@ p {
   height: 115px;
   border-radius: 50%;
 }
+
+.albums {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 70%px;
+  flex-wrap: wrap;
+  margin: 15px;
+}
+
+.albums-individual {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 70%px;
+  flex-wrap: wrap;
+  margin: 15px;
+}
+
+.albums img {
+  width: 300px;
+  height: 300px;
+  border: 6px solid #333;
+  border-radius: 50%;
+}

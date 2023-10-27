@@ -2,6 +2,10 @@
 <html lang="en">
   <head>
     <link rel="shortcut icon" type="image/x-icon" href="../img/ico.jpg" />
+    <script
+      src="https://kit.fontawesome.com/385479e3e1.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="style.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,25 +32,30 @@
     <div id="barrainicio">
       <div>
         <a class="barra" href="../addAlbum/addAlbum.html"
-          >Agregar o Editar album</a
+          >Agregar album</a
         >
       </div>
       <br />
       <div><a class="barra" href="../tour/tour.html">Fechas de Gira</a></div>
       <br />
-      <div><a class="barra" href="../index.html">Salir</a></div>
+      <div><a class="barra" href="../login/login.html" id="logout">Salir</a></div>
       <img id="ava" src="../img/avatar.jpg" alt="Avatar" />
-      <p>John Fogerty</p>
+      <p id="nombre-usuario">John Fogerty</p>
     </div>
-    <div id="menualbum">
-      <a href="../album1/album1.html">
-        <img class="imgalbum" src="../img/1album.jpg" alt="CCR" />
-      </a>
-      <a href="../album2/album2.html">
-        <img class="imgalbum" src="../img/album2.jpg" alt="CCR" />
-      </a>
+    <div class="albums">
+      <div id="menualbum">
+        <div class="albums-individual">
+        <a href="../album1/album1.html">
+          <img class="imgalbum" src="../img/1album.jpg" alt="CCR" />
+        </a>
+        </div>
+        <div class="albums-individual">
+        <a href="../album2/album2.html">
+          <img class="imgalbum" src="../img/album2.jpg" alt="CCR" />
+        </a>
+      </div>
+      </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./script.js"></script>
   </body>

@@ -73,10 +73,15 @@ body {
     padding: 8px;
     font-size: 18px;
     display: block;
+    cursor: pointer;
   }
 
   #al1 {
     margin-left: 42%;
     width: 250px;
 
+  }
+
+  .eliminar {
+    display: none;
   }

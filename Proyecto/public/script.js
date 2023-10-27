@@ -89,7 +89,6 @@ const Logout = document.getElementById("logout");
 
 Logout.addEventListener("click", () => {
   logOut();
-  console.log(error.message);
   window.location.href = "./login/login.html";
 
 });
