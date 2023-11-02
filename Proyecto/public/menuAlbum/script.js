@@ -1,4 +1,8 @@
 const nombre = document.querySelector("#nombre-usuario");
+const redirect = (id) => {
+  window.location.href = `../album1/album1.html?album=${id}`
+}
+
 
 const onLoad = async () => {
   try {
@@ -27,6 +31,7 @@ const renderAlbums = (album) => {
   iconTrash.classList.add("fas");
   iconTrash.classList.add("fa-trash-alt");
   iconTrash.classList.add("trash");
+
 
   imgAlbum.addEventListener("click", () => {
     redirect(album._id);
@@ -59,7 +64,7 @@ const getAlbums = async () => {
   const logOut = async () => {
     try {
       const response = await axios.post("../../logout");
-      window.location.href = "./login/login.html";
+      window.location.href = "../login/login.html";
     } catch (error) {
       console.log(error.message);
     }
@@ -72,3 +77,18 @@ const getAlbums = async () => {
     window.location.href = "./login/login.html";
   });
   
+const deleteAlbum = async (album) => {
+  try {
+    await axios.delete(`../album/${album}`);
+    await swal("Vas a eliminar el album, estas seguro?");
+    await swal("album eliminado correctamente");
+    const albums = document.querySelectorAll(".albums-individual");
+    albums.forEach((album) => album.remove());
+    const response = await axios.get("../../album/todos");
+    response.data.map((album) => {
+      renderAlbums(album);
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};

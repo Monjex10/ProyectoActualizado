@@ -1,29 +1,36 @@
+
 // import logOut from "../utils/utils.js";
 
-// const deleteSong = async (album, cancion) => {
-//   try {
-//     await axios.put(
-//       `http://localhost:3000/song/delete/${album}?idSong=${cancion}`
-//     );
-//     await swal("cancion eliminada correctamente");
-//     ul.innerHTML = ""; // limpia la lista actual
-//     const response = await axios.get(`http://localhost:3000/album/${idAlbum}`);
-//     const canciones = response.data.canciones;
-//     canciones.map((cancion, index) => {
-//       renderSongs(cancion, index);
-//     });
-//     const trash = document.querySelectorAll("#delete");
-//     for (let i = 0; i < trash.length; i++) {
-//       trash[i].addEventListener("click", () => {
-//         deleteSong(idAlbum, canciones[i]._id);
-//       });
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 
+
+const query = window.location.search.split("=")
+console.log(query);
+const idAlbum = query[1]
+console.log(idAlbum);
 const nombre = document.querySelector("#nombre-usuario");
+
+const deleteSong = async (album, cancion) => {
+  try {
+    await axios.put(
+      `../song/delete/${album}?idSong=${cancion}`
+    );
+    await swal("cancion eliminada correctamente");
+    ul.innerHTML = ""; // limpia la lista actual
+    const response = await axios.get(`../album1/${idAlbum}`);
+    const canciones = response.data.canciones;
+    canciones.map((cancion, index) => {
+      renderSongs(cancion, index);
+    });
+    const trash = document.querySelectorAll("#delete");
+    for (let i = 0; i < trash.length; i++) {
+      trash[i].addEventListener("click", () => {
+        deleteSong(idAlbum, canciones[i]._id);
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const onLoad = async () => {
   try {
@@ -56,3 +63,12 @@ editar.addEventListener("click", () => {
 });
 
 onLoad();
+
+const getAlbum = async () => {
+  try {
+    const response = await axios.get(`../album/${idAlbum}`)
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+}

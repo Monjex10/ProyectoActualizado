@@ -53,7 +53,7 @@ body {
   
   
   #barrainicio {
-    height: 250px;
+    height: 350px;
     width: 150px;
     position: sticky;
     top: 0px;
@@ -84,4 +84,8 @@ body {
 
   .eliminar {
     display: none;
+  }
+
+  i {
+    color: brown;
   }

@@ -30,6 +30,7 @@ body {
 }
 
 .imgalbum {
+  cursor:pointer;
   border-color: 2px rgb(83, 78, 76);
   padding: 0px 5px 0px 5px;
   width: 300px;
@@ -37,6 +38,7 @@ body {
   top: 50px;
   left: 10px;
   border-radius: 100%;
+  
 }
 
 .medio {
@@ -95,11 +97,18 @@ p {
   max-width: 70%px;
   flex-wrap: wrap;
   margin: 15px;
+  cursor: pointer;
 }
 
 .albums img {
-  width: 300px;
-  height: 300px;
+  width: 230px;
+  height: 230px;
   border: 6px solid #333;
   border-radius: 50%;
 }
+
+i {
+  color: rgb(255, 140, 0);
+  width: 30px;
+}
+

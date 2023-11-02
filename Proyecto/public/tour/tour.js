@@ -1,14 +1,14 @@
 
-let nombre = prompt("Cuál es tu nombre?").toUpperCase();
-while (nombre.length < 3) {
-  nombre = prompt(
-    "Mmmm, tu nombre no puede ser tan corto, ingresa al menos 3 letras",
-  ).toUpperCase();
-}
-const span = document.getElementById("Bienvenido");
-span.textContent = `Hola, ${nombre}`;
-const i = document.querySelector("i");
-i.setAttribute("class", "fa fa-ticket");
+// let nombre = prompt("Cuál es tu nombre?").toUpperCase();
+// while (nombre.length < 3) {
+//   nombre = prompt(
+//     "Mmmm, tu nombre no puede ser tan corto, ingresa al menos 3 letras",
+//   ).toUpperCase();
+// }
+// const span = document.getElementById("Bienvenido");
+// span.textContent = `Hola, ${nombre}`;
+// const i = document.querySelector("i");
+// i.setAttribute("class", "fa fa-ticket");
 
 // let nombreSw;
 // let edad;
@@ -85,4 +85,32 @@ i.setAttribute("class", "fa fa-ticket");
 //     );
 //   }
 // }
+const nombre = document.querySelector("#nombre-usuario");
 
+const onLoad = async () => {
+  try {
+    const response = await axios.get("../../../me");
+    nombre.textContent = `Hola, ${response.data.nombre} ${response.data.apellido}`;
+  } catch (error) {
+    console.log(error.message);
+    // window.location.href = "../index.html";
+  }
+};
+
+onLoad();
+
+const logOut = async () => {
+  try {
+    const response = await axios.post("../../logout");
+    window.location.href = "../login/login.html";
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+const Logout = document.getElementById("logout");
+
+Logout.addEventListener("click", () => {
+  logOut();
+  window.location.href = "./login/login.html";
+});

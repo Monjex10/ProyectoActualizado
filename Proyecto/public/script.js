@@ -19,36 +19,31 @@ import { logOut } from "./utils/utils.js";
 
 // addFavorites(favoriteRecords);
 
-// const redirect = (id) => {
-//   window.location.href = `../Album/Album.html?album=${id}`;
-// };
+const redirect = (id) => {
+  window.location.href = `../Album/Album.html?album=${id}`;
+};
 
-// const divAlbums = document.querySelector(".albums");
+const divAlbums = document.querySelector(".container");
 
-// const renderAlbums = (album) => {
-//   const div = document.createElement("div");
-//   const imgAlbum = document.createElement("img");
-//   const iconTrash = document.createElement("i");
+const renderAlbums = (album) => {
+  const div = document.createElement("div");
+  const imgAlbum = document.createElement("img");
 
-//   div.classList.add("albums-individual");
-//   // let urlPortada = album.portada
-//   let urlPortada = album.portada
-//     ? album.portada
-//     : "https://imgur.com/0uSALUr.png";
-//   imgAlbum.setAttribute("src", urlPortada);
-//   iconTrash.classList.add("fas");
-//   iconTrash.classList.add("fa-trash-alt");
-//   iconTrash.classList.add("trash");
+  div.classList.add("item");
+  let urlPortada = album.portada
+   ? album.portada
+     : "https://imgur.com/0uSALUr.png";
+  imgAlbum.setAttribute("src", urlPortada);
 
-//   // agregamos un addEvenListener
-//   imgAlbum.addEventListener("click", () => {
-//     redirect(album._id);
-//   });
-//   div.appendChild(imgAlbum);
-//   div.appendChild(iconTrash);
-//   divAlbums.appendChild(div);
-// };
 
+   // agregamos un addEvenListener
+   imgAlbum.addEventListener("click", () => {
+     redirect(album._id);
+   });
+  div.appendChild(imgAlbum);
+
+   divAlbums.appendChild(div);
+ };
 // const getAlbums = async () => {
 //   try {
 //     const response = await axios.get("../album/todos");

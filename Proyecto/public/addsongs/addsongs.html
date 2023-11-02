@@ -8,53 +8,45 @@
     <title>Álbum</title>
   </head>
   <body>
-    <a href="../menuAlbum/menualbum.html">
+    <a href="../album1/album1.html">
       <h2>Volver</h2>
     </a>
     <div>
-      <form method="post">
+      <form method="put">
         <label for="title"
           >Título
           <input id="title" type="text" placeholder="Título" required />
         </label>
         <br />
         <br />
-        <label for="anioLanzamiento"
-          >Año
-          <input id="anioLanzamiento" type="text" placeholder="1980" required />
-        </label>
-        <br />
-        <br />
-        <label for="description"
-          >Descripción
-          <br />
-          <textarea
-            id="description"
-            name="descripcion"
-            cols="30"
-            rows="10"
-            required
-            style="resize: none"
-          ></textarea>
-        </label>
-        <br />
-        <br />
-        <label for="image"
-          >Cargar una imagen del disco
+        <label for="Duracion"
+          >Duracion
           <input
-            id="image"
+            id="duracion"
+            type="number"
+            placeholder="4:10"
+            required
+          />
+          <br />
+        </label>
+        <br />
+        <br />
+        <label for="url"
+          >Url de la Cancion (youtube, spotify, etc)
+          <input
+            id="url"
             type="text"
-            placeholder="URL de la imagen"
+            placeholder="URL de la Cancion"
             required
           />
         </label>
         <br />
         <br />
-        <input class="add-button" type="submit" />
+        <input class="add-button" type="submit" id="agregar"/>
       </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="agregarAlbum.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
