@@ -16,24 +16,24 @@ function getInputValues() {
   // Obtener los input del form
   const titleInput = document.getElementById("title"); 
   const duracionInput = document.getElementById("duracion");
-  const urlInput = document.getElementById("url");
+  const linkInput = document.getElementById("link");
 
   // Obtener los valores de los campos de entrada
   const titleValue = titleInput.value;
   const duracionValue = duracionInput.value;
-  const urlValue = urlInput.value;
+  const linkValue = linkInput.value;
 
   // Devolver los valores en un objeto
   return {
     titulo: titleValue,
     duracion: duracionValue,
-    url: urlValue,
+    link: linkValue,
   };
 }
 
 const getAlbum = async () => {
   try {
-    const { data } = await axios.get(`../../../album1/${idAlbum}`);
+    const { data } = await axios.get(`../../album1/${idAlbum}`);
     album = data;
   } catch (error) {
     console.log(error);
@@ -47,7 +47,7 @@ const addSong = async (e) => {
   const objectToSend = getInputValues();
  
   try {
-    await axios.put(`../../song/${idAlbum}`, objectToSend);
+    await axios.put(`../song/${idAlbum}`, objectToSend);
     await swal("cancion agregada correctamente");
     window.location.href = "../index.html"
   } catch (error) {

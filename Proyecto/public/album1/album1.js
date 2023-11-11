@@ -1,7 +1,10 @@
 
 // import logOut from "../utils/utils.js";
 
-
+addSongs.addEventListener("click", () => {
+  console.log("=====> YA HICE CLICK!!!!!!");
+  redirect(idAlbum._id, `../addSongs/addSongs.html`);
+});
 
 const query = window.location.search.split("=")
 console.log(query);
@@ -72,3 +75,4 @@ const getAlbum = async () => {
     console.log(error);
   }
 }
+

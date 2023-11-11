@@ -13,33 +13,16 @@
     </a>
     <div>
       <form method="put">
-        <label for="title"
-          >Título
-          <input id="title" type="text" placeholder="Título" required />
-        </label>
+        <label for="titulo">Título: </label>
+            <input type="text" id="titulo" name="titulo"  placeholder="Titulo" required />
         <br />
         <br />
-        <label for="Duracion"
-          >Duracion
-          <input
-            id="duracion"
-            type="number"
-            placeholder="4:10"
-            required
-          />
-          <br />
-        </label>
+        <label for="duracion"> Duración: </label>
+            <input type="text" id="duracion" name="duracion" placeholder="4:23" required />
         <br />
         <br />
-        <label for="url"
-          >Url de la Cancion (youtube, spotify, etc)
-          <input
-            id="url"
-            type="text"
-            placeholder="URL de la Cancion"
-            required
-          />
-        </label>
+        <label for="link"> Link canción: </label>
+            <input type="url" id="link" name="link" required placeholder="https://..." />
         <br />
         <br />
         <input class="add-button" type="submit" id="agregar"/>
